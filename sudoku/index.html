@@ -1,0 +1,54 @@
+<!--
+ *  Sudoku is html/javascript code that lets you solve a sudoku puzzle.
+ *  Copyright (C) 2020 Arun Kunchithapatham
+ *
+ *  This file is part of Sudoku.
+ *
+ *  Sudoku is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Sudoku is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Sudoku.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="./sudoku.css"/>
+    </head>
+
+    <body>
+        <div id="inputContainer" style="display:none;">
+            <input id="importInput" type="file" accept=".json"></input>
+        </div>
+        <div id="controller" class="sudokucontroller">
+            <div id="showOptions" class="controllerbutton">Options</div>
+            <div id="dummy" class="dummy"></div>
+            <div id="timer" class="controllerbutton">00:00:00</div>
+        </div>
+        <div id="sudokumenu" class="sudokumenu">
+            <div id="importpuzzles" class="sudokumenuitem">Import</div>
+            <div id="newpuzzle" class="sudokumenuitem">New Puzzle</div>
+            <div id="resetpuzzle" class="sudokumenuitem">Reset</div>
+            <div id="clearall" class="sudokumenuitem">Clear Cells</div>
+            <div id="fixall" class="sudokumenuitem">Fix Cells</div>
+            <div id="closeoptions" class="sudokumenuitem">Close</div>
+        </div>
+        <div id="sudoku" class="sudoku"></div>
+        <div id="sudoku_mask" class="sudoku_mask"></div>
+        <div id="sudokunumbers">
+        </div>
+        <script type="text/javascript" src="./validSudokus.js"></script>
+        <script type="text/javascript" src="./js-utils/timer/Timer.js"></script>
+        <script type="text/javascript" src="./sudoku_web.js"></script>
+    </body>
+</html>

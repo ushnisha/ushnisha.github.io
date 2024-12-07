@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<HTML lang="en">
+   <HEAD>
+      <META charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <TITLE>Tranquility Release Notes</TITLE>
+    <style>  
+      .ulclass { text-decoration: underline; }
+
+      div.tranquility {
+          margin: 0 auto;
+          padding: 10px;
+          width: 70%;
+          font-size: 17px;
+          background-color: #FDFDFD;
+      }
+
+      @media (max-width: 600px) {
+         div.tranquility {
+           padding: 1px;
+           width: 100%;
+           font-size: 15px;
+           background-color: #FDFDFD;
+         }
+      }
+
+    </style>
+   </HEAD>
+   <BODY>
+      <DIV class="tranquility">
+      <H1><img src="./tranquility_icon_large.png" alt="Tranquility Icon"/>&nbsp;&nbsp;Tranquility Release Notes</H1>
+
+
+      <P><span class="ulclass">Version 3.0.22</span><BR/>
+      <UL>
+          <LI>Provide option to include/exclude header/footer when printing the page as PDF document
+          <LI>Increase the margins of printed PDF to 1.0" (default 0.5"). At this time, margin is not user customizable
+          <LI>Remove font size hardcoding of certain custom elements and make sure they also use the user specified font settings (certain element dimensions are now scaled based on user specified font size)
+          <LI>Attempt to fix issue with scrolling to top of page after processing the page
+          <LI>Fix regression where some of the related/supporting links were not showing up (for easy navigation in continuous browsing mode) See github issue #27 for more details
+          <LI>Attempt to remove menu like elements on some pages
+      </UL>
+
+
+      <P><span class="ulclass">Version 3.0.21</span><BR/>
+      <UL>
+          <LI>Preserve the original zoom setting (scale the font size instead)
+          <LI>Clone the document instead of the body (attempt to remove more event listeners)
+          <LI>Auto-hide the UI controls (toggle display on clicking on the body of the page)
+          <LI>Reorganize code to separate out UI related functionality into a separate file
+      </UL>
+
+
+      <P><span class="ulclass">Version 3.0.20</span><BR/>
+      <UL>
+          <LI>Update PRIVACY.md to reflect removal of "tabs" permission
+          <LI>Handle corner case where pages with content in the "main" tag have content flowing outside the reading width
+          <LI>Fix bug where the page up/down scroll buttons do not work in offline/saved pages
+          <LI>Refine regexp to remove additional ad related elements
+          <LI>Ignore CDATA nodes when measuring amount of text in an element
+      </UL>
+
+
+      <P><span class="ulclass">Version 3.0.19</span><BR/>
+      <UL>
+          <LI>Adding missing heading/title if it has been removed during processing
+          <LI>Move logic to hide/remove spurious elements from css to javascript code for better control; added additional filtering logic
+          <LI>Add scroll buttons (for page-up/page-down) for people who prefer mouse to keyboard (and for mobile users)
+          <LI>Always scroll back to the top of the page/article after transforming a page
+          <LI>Try to retain images within an article/main tag
+          <LI>Minor bug fixes and code restructuring/simplification
+          <LI>Removed unnecessary "tabs" permission request since we are not using it
+      </UL>
+
+
+      <P><span class="ulclass">Version 3.0.18</span><BR/>
+      <UL>
+          <LI>Bug fix for regression on some pages.  The computed height and width property were used to identify hidden elements, but the logic used was incorrect.  Undoing this change.
+          <LI>Minor change to try and remove more unnecessary images that get restored even though their parent elements were removed
+      </UL>
+
+
+      <P><span class="ulclass">Version 3.0.17</span><BR/>
+      <UL>
+          <LI>Allow users to configure A4/Letter paper size in extension preferences when saving the transformed page as a PDF
+          <LI>Add the original/source link to the top of the transformed page.  This is useful when the page is saved as a PDF or offline reading and the users have forgotten and need to refer to the original source.
+          <LI>Bug fix so that we identify computed CSS style properties correctly
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.16</span><BR/>
+      <UL>
+          <LI>Enable keyboard shortcut available with legacy version (Ctrl+Alt+T)
+          <LI>New keyboard option to launch preferences page (Ctrl+Alt+J)
+          <LI>New keyboard option to launch saved/offline pages (Ctrl+Alt+K)
+          <LI>Keyboard shortcuts are user customizable. Refer to the webpage: https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox
+          <LI>Fix progress bar visibility bug when saving transformed page as PDF
+          <LI>Fix bug in not reverting to original page when clicking on browser action icon (when the URL has a "#" reference
+          <LI>Ability to view offline pages from the preferences page. This avoids the need to first run the extension on some page before a user can access the saved/offline pages
+          <LI>Removed "Save as PDF" functionality from Android version. Android already has such an option on the Firefox-Page menu which works just fine. The icon only clutters up the usually smaller screen in Android phones/devices
+          <LI>Added user friendly privacy policy statement and explanation of permissions used by the extension
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.15</span><BR/>
+      <UL>
+          <LI>Ability to save a PDF document of the Tranquility Reader view for offline reading or sharing with others (not supported on MacOS)
+          <LI>Improve handling of images (fix cases where image width was larger than the reading width setting)
+          <LI>Use CSS settings to identify some extraneous elements so that they can be removed from the page during processing
+          <LI>Updated copyright message
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.14</span><BR/>
+      <UL>
+          <LI>Added an option to change browser action icon to a grayscale version
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.13</span><BR/>
+      <UL>
+          <LI> Fixed problem with TITLE/HEAD elements being removed because their default css property of display is "none".  This causes a problem when saving a link for offline reading -- saved article shows up with a blank name
+          <LI> Fixed logic for replacing using the contents of the ARTICLE tag as proxy for the entire content of the page.  The original solution of replacing just the parent was not sufficient to remove a lot of other crud.  Now, we replace the entire body of the page with the article tag contents
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.12</span><BR/>
+      <UL>
+          <LI> Attempt to remove all event handlers in the original page to prevent them from modifying the processed page
+          <LI> Fix to handle pages that have windows-1252 encoding
+          <LI> Ignore links like "mail:" that need not be processed by the addon and which caused the addon to freeze while processing pages with such links
+          <LI> More aggressive removal of hidden elements this can cause more images to be removed in the processed view
+          <LI> Removal of links with onclick events/javascript since they are often associated with social media forwarding links/images and clutter the processed page
+          <LI> Minor changes to make code consistent (tag names are now all in uppercase)
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.11</span><BR/>
+      <UL>
+          <LI>When a reader click on a link in the tranquility mode, the page updates to show the clicked URL contents in the tranquility mode.  However, the address bar is not updated.
+          <LI>An icon is provided on the top right corner of the page with a link to the URL of the page that is currently processed/displayed.
+          <LI>Updated copyright message
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.10</span><BR/>
+      <UL>
+          <LI>Fix to scale images better
+          <LI>Remove hidden images (based on the computedStyle properties)
+          <LI>Allow smaller length text content to show more information.  This can have the side effect of unnecessary material getting into the tranquilized view.  So, this is currently experimental.
+          <LI>Updated copyright message
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.9</span><BR/>
+      <UL>
+          <LI>Add support to handle #links; Tranquility currently tries to reload the entire page and reprocess instead of moving to the #link.
+          <LI>Experimental support to handle images better.  Most images were being removed.  Added support for images.  Currently, more images than necessary are retained (including some pesky icons) but the changes are ready for publishing to a wider audience to receive feedback.
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.8</span><BR/>
+      <UL>
+          <LI>Default font size for Android preset was changed to 15 (a typo had set it to 25 instead).
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.7</span><BR/>
+      <UL>
+          <LI> Ability to highlight a portion of a web page and run Tranquility to process and display only the selected text.  Right click and select "Tranquilize Selection!" from the context menu.
+          <LI>Gives users additional control on the content they wish to read.  Not supported on Android.
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.6</span><BR/>
+      <UL>
+          <LI> Create and manage user defined presets for tranquility preferences
+          <LI> Changes made to the preferences are instantly reflected on all tabs in the Tranquility Reader view.  This allows for fast iterations in customizing user preferences.
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.5</span><BR/>
+      <UL>
+          <LI> Limited support for Firefox on AndroidOS (version 55 and later)
+          <LI> Only the browserAction (running Tranquility by selecting the browser toolbar menu option) is available on AndroidOS
+          <LI> No command shortcuts or right click context menus provided on AndroidOS
+          <LI> Currently no ability to to import/export the offline pages on AndroidOS
+          <LI> Changes to css/default options for AndroidOS/smaller screen devices.
+      </UL>
+
+      <P><span class="ulclass">Version 3.0.4</span><BR/>
+      <UL>
+          <LI>Removed popup menu for the browser action; now, clicking on the Tranquility icon will make the page readable. For the other actions provided through the popup menu, users will have to go to the options page or use the Read Later button after running tranquility.</LI>
+          <LI> Added a few "preset" configurations (color schemes and font colors) rather than having to customize each option manually. This is experimental at this time; will explore the option of allowing users to import a configuration file for this in the future.</LI>
+          <LI> Changed the background page to "about:blank" (instead of mozilla.org) when loading offline pages from the options window.</LI>
+          <LI> Minor bug fix to remove the progress bar which was not being removed in some corner cases.</LI>
+          <LI> Bug fix to correctly load original page when toggling Tranquility mode for an offline page.</LI>
+          <LI> Bug fix to handle loading mixed security content pages correctly</LI>
+          <LI> Bug fix to handle pre-formatted pages correctly </LI>
+      </UL>
+
+      <P><span class="ulclass">Version 3.0/3.0.1</span><BR/>
+      <UL>
+         <LI>Written using WebExtensions APIs
+         <LI>First release with support for Chrome/Chromium browsers (all prior versions work only with Firefox)
+         <LI>Ability to export/import offline content (please be sure to export offline content from version 2.0 and manually import into version 3.0.1)
+         <LI>Reduced set of customization options (limitation of WebExtensions APIs)
+         <LI>Removed support for background image and wikipedia/wiktionary search facility
+         <LI>No keyboard shortcuts (very limited options available through WebExtensions APIs - waiting for more customization capabilities)
+         <LI>Several minor bug fixes that were put off until this version
+      </UL>
+
+      <P><span class="ulclass">Version 2.0</span><BR/>
+      <UL>
+         <LI>Ability to export saved offline content to a .json file (right click on link at the top of the list of offline files available and select "Save As", to save as a .json file.  This file can be imported into future versions of Tranquility.
+      </UL>
+      <P><span class="ulclass">Version 1.2.1</span><BR/>
+      <UL>
+         <LI>Moved Menu to the bottom of the window; hide it faster (less obtrusive)
+         <LI>Tranquility font size will override the page specific cached zoom level
+         <LI>Support for a background image (FilePicker to select local file)
+         <LI>Support for custom hex color codes for background, font, links, annotation highlighting
+         <LI>Converted some hard coded string values to use localization
+         <LI>Reduced complexity by eliminating support for defaultFontColor and defaultBackgroundColor etc.
+         <LI>Removed support for Firefox versions prior to Firefox 20.0
+         <LI>No longer detect documents with minimal content and no longer warn about document still loading (did not help the user experience; more negative feedback than positive regarding these features)
+         <LI>Now when offline reading list is requested when the active tab is not in tranquility view (or not a html document, such as the "New Tab" view), then the offline reading list is opened in a new tab.
+      </UL>
+      <P><span class="ulclass">Version 1.1.8</span><BR/>
+      <UL>
+         <LI>Check private browsing mode and alert that "Read Later" functionality is not available.
+         <LI>Minor changes to menu show/hide logic. The menu is now almost completely hidden, and the expand menu button (+) is now moved to the top right of the browser window. so that when printing the page, neither the menu nor the button obscure the text on the page.
+         <LI>Handle url's that point to text files better. Files that have only preformatted content were not being processed correctly (line breaks were being removed from the preformatted contents also).
+      </UL>
+      <P><span class="ulclass">Version 1.1.7</span><BR/>
+      <UL>
+         <LI>Ability to edit notes/annotations.
+         <LI>Minor algorithm changes to remove additional hidden elements.
+         <LI>Autohide menu after a few seconds for improved readability.
+      </UL>
+      <P><span class="ulclass">Version 1.1.6</span><BR/>
+      <UL>
+         <LI>Ability to add notes and annotations to offline content; Select a portion of the text and right click to get the context menu "Tranquility - Add Annotation" to add a new annotation.
+         <LI>A summary of all the annotations is available via the "View Notes" button. This is a convenient way to collate all notes and compile them for a report (or for later review).
+         <LI>The layout of the tranquility mode has been streamlined and given a more minimal appearance. Buttons have been moved from the side to the top. The reading area border has been removed to improve readability.
+      </UL>
+      <P><span class="ulclass">Version 1.1.5</span><BR/>
+      <UL>
+         <LI>Invalid Release
+      </UL>
+      <P><span class="ulclass">Version 1.1.4</span><BR/>
+      <UL>
+         <LI>"Read Later" functionality to store tranquility view of pages for offline reading
+      </UL>
+      <P><span class="ulclass">Version 1.1.3</span><BR/>
+      <UL>
+         <LI>Support for customization of link color, line width, text-justification
+         <LI>Bug fix for a corner case where the tranquility view reversed the display order of all paragraphs in the web page
+      </UL>
+      <P><span class="ulclass">Version 1.1.2</span><BR/>
+      <UL>
+         <LI>Non-English users can now select the Wikipedia language of choice from the Preferences window
+         <LI>Images and Preformatted content will be resized to fit within the reading width
+         <LI>Additional support for multi-page articles.  A navigation pane is provided at the top
+             and bottom of the web page to navigate to the <em>Next</em> or <em>Previous</em> page
+             or to a specific numbered page/link, if available
+         <LI>Modification of code to use <em>String Bundles</em> to allow for localization
+         <LI>Improved handling of formatted links in the <em>Tranquil Browsing Mode</em>
+         <LI>If the <em>Print</em> or <em>Single Page View</em> does not return sufficient content
+             Tranquility will now try to process the original page.  This may help in some cases where
+             the <em>Print</em> or <em>Single Page View</em> is available only to registered/premium
+             users
+         <LI>Users can now select the pruning strategy used by Tranquility in its attempt to get a 
+             readable web page.  The default option is a <em>Conservative</em> pruning strategy.  
+             The <em>Moderate</em> and <em>Aggressive</em> pruning strategies may result
+             in truncation of relevant/useful content depending on the structure of the web page
+      </UL></P>
+      <P><span class="ulclass">Version 1.1.1</span><BR/>
+      <UL>
+         <LI> Tranquility ToolBar button provides direct access to Tranquility Preferences
+         <LI>Additional preference to enable PAUSE/BREAK button as a single keystroke shortcut 
+             for heavy users of Tranquility.  This shortcut is disabled by default
+         <LI> Ability to customize background color and font color (or revert back to the defaults)
+         <LI> Additional links are now available through a "More Links" button
+         <LI> <EM>Tranquil Browsing Mode</EM> is enabled by default.  In this mode, left clicking 
+              on a link in the Tranquility view will also open the link URL in the 
+              Tranquility view in the current tab. Ctrl+Left Click will open the link URL in the 
+              Tranquility view in a new tab
+         <LI> The main article s grayed out when viewing the Wiki panel or the "More Links" panel
+         <LI> If a web page has not completed loading fully, Tranquility will wait for it to 
+              complete loading before processing the document
+         <LI> Tranquility informs you when a web page has very little text content and reverts back
+              to the original web page view.  You can always force Tranquility to proceed anyway and
+              show you the Tranquility view
+         <LI> FreeDictionary has been replaced with Wiktionary (no ads)
+         <LI> Bug fixes to improve handling of certain webpages
+      </UL></P>
+      <P><span class="ulclass">Version 1.0.6</span><BR/>
+      <UL>
+         <LI>Improved handling of some web sites that were not processed correctly
+         <LI>Preliminary support for HTML5 tags (article, section)
+      </UL></P>
+      <P><span class="ulclass">Version 1.0.5</span><BR/>
+      <UL>
+         <LI>Clicking outside the wikipedia/freedictionary.org panel will hide the panel.  This is more
+             user friendly than clicking on the toolbar button or keyboard shortcut options to hide the 
+             panel
+      </UL></P>
+      <P><span class="ulclass">Version 1.0.4</span><BR/>
+      <UL>
+         <LI>Fixed bug in font-size modification code
+         <LI>Preference settings accessbile now through the Tools menu
+         <LI>Keyboard access-keys added to Tools menu items
+         <LI>Preference changes will update all tabs in the tranquility mode immediately.  Prior to
+             1.0.4, the preference changes would take effect only the next time Tranquility is run
+      </UL></P>
+      <P><span class="ulclass">Version 1.0.3</span><BR/>
+      <UL>
+         <LI> Wider range of font-sizes are now available (up to 64px)
+         <LI> Ability to select text in the tranquility mode and right click to search wikipedia or
+              freedictionary.org
+         <LI> Keyboard shortcut Ctrl+Alt+D will toggle visibility of freedictionary.org query/panel
+         <LI> Keyboard shortcut Ctrl+Alt+W will toggle visibility of wikipedia query/panel
+         <LI> Clicking on the toolbar button will hide the wikipedia/freedictionary.org panel if it
+              is visible; else, it will toggle the view with the orginal web content
+      </UL></P>
+      <P><span class="ulclass">Version 1.0.2</span><BR/>
+      <UL>
+         <LI>New preference to control the width of the readable portion of the webpage
+         <LI>Toolbar button size changed based on AMO review feedback
+      </UL></P>
+      <P><span class="ulclass">Version 1.0.1</span><BR/>
+      <UL>
+         <LI>Toolbar button position changed based on original review feedback
+         <LI>Ability to customize the font-family and font-size through preferences.  These changes
+             will take effect only on the subsequent webpages on which Tranquility is run
+      </UL></P>
+      <P><span class="ulclass">Version 1.0</span><BR/>
+      <UL>
+         <LI>Invoke tranquility via Toolbar icon, Ctrl+Alt+T keyboard shortcut or right click context
+             menu to open link in a new tab
+         <LI>Unlike iReader and Readability, compatible with NoScript
+         <LI>Preliminary support for multi-page documents (where a print view of a single page view
+             is provided) 
+         <LI>Ability to disable the background image from the preferences window
+      </UL></P>
+      <P><span class="ulclass"><a href="./index.html">Back to Tranquility main page</a></span><BR/>
+      </P>
+      </DIV>
+   </BODY>
+</HTML>

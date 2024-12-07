@@ -1,0 +1,112 @@
+/*
+ *  Sudoku is html/javascript code that lets you solve a sudoku puzzle.
+ *  Copyright (C) 2020 Arun Kunchithapatham
+ *
+ *  This file is part of Sudoku.
+ *
+ *  Sudoku is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Sudoku is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Sudoku.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+div.sudoku {
+    position: fixed;
+    border: solid 2px black;
+}
+
+div.sudokusquare {
+    position: absolute;
+    font-size: 2.4em;
+    color:#00008B;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 1px black;
+    background-clip: padding-box;
+}
+
+div.fixed {
+    background-color:#dfdfdf;
+    color: #000000;
+    font-weight: bold;
+}
+
+div.selected {
+    background-color:#d8bfd8;
+}
+
+div.error {
+    background-color:#fa8072;
+}
+
+div.sudokuchoice {
+    position: absolute;
+    font-size: 3em;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 1px black;
+}
+
+div.disabled {
+    visibility:hidden;
+    pointer-events: none;
+}
+
+div.sudokucontroller {
+    font-size: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+div.controllerbutton {
+    border: solid 1px silver;
+    border-radius: 10px;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    float: left;
+    padding: 5px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+div.sudokumenu {
+    position: fixed;
+    border: solid 1px silver;
+    border-radius: 10px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
+    column-gap: 50px;
+    z-index: 10;
+}
+
+div.sudokumenuitem {
+    border: solid 1px silver;
+    border-radius: 10px;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    float: left;
+    padding: 5px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+div.sudoku_mask
+{
+    position: fixed;
+    background-color: silver;
+    opacity: 0.99;
+    z-index: 9999999;
+    visibility: hidden;
+}
